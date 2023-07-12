@@ -10,8 +10,8 @@ Fork from [vercel/next-react-server-components](https://github.com/vercel/next-r
 
 ### Running Locally
 
-1. `npm install`
-2. `npm run dev`
+1. `pnpm install`
+2. `pnpm run dev`
 
 Go to `localhost:5000`. (config in `package.json`)
 
