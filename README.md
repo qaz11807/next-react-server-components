@@ -1,26 +1,27 @@
 # Next.js App Router + React Server Components
 
-Try the demo live here: [**next-rsc-hn.vercel.app**](https://next-rsc-hn.vercel.app).
+Try the demo live here: [**min-hacker-new-clone.vercel.app**](https://min-hacker-new-clone.vercel.app/).
 
 ## Introduction
 
 This is a demo app of the Hacker News website clone, which shows Next.js App Router with support for React Server Components.
 
-[Learn more](https://nextjs.org/docs/getting-started/react-essentials#server-components).
+Fork from [vercel/next-react-server-components](https://github.com/vercel/next-react-server-components)
 
 ### Running Locally
 
-1. `pnpm install`
-2. `pnpm dev`
+1. `npm install`
+2. `npm run dev`
 
-Go to `localhost:3000`.
+Go to `localhost:5000`. (config in `package.json`)
 
-### Deploy
+### Enviroment
 
-You can quickly deploy the demo to Vercel by clicking this link:
+make the `.env` file
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/templates/next.js/react-server-components)
+```
+API_HOST=         # backend api host
 
-## License
-
-This demo is MIT licensed.
+CLIENT_ID=        # backend doorkeeper application uid
+CLIENT_SECRET=    # backend doorkeeper application secret
+```
