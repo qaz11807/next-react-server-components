@@ -4,7 +4,7 @@ import SystemInfo from 'components/server-info'
 import Footer from 'components/footer'
 
 export const metadata = {
-  title: 'Next.js 13 + React Server Components Demo',
+  title: 'HackerNews Demo',
   description:
     'Hacker News clone built with Next.js 13 and the app directory (beta).',
   themeColor: '#ffa52a',

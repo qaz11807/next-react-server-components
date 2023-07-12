@@ -1,14 +1,10 @@
 import styles from './header.module.css'
 import Link from 'next/link'
+import { cookies } from "next/headers";
+import LoginStatus from 'components/login-status'
 
 const navItems = [
-  { title: 'new' },
-  { title: 'past' },
-  { title: 'show' },
-  { title: 'ask' },
-  { title: 'show' },
-  { title: 'jobs' },
-  { title: 'submit' }
+  { title: 'submit', path: '/submit' }
 ]
 
 export default function Header() {
@@ -23,17 +19,19 @@ export default function Header() {
         </Link>
         <div className={styles.nav}>
           <ul className={styles['nav-ul']}>
-            {navItems.map(({ title }, index) => (
-              <li key={index}>
-                <span>{title}</span>
-              </li>
+            {navItems.map(({ title, path }, index) => (
+              <Link href={path}>
+                <li key={index}>
+                  <span>{title}</span>
+                </li>
+              </Link>
             ))}
           </ul>
         </div>
       </div>
       <div className={styles.right}>
         <span className={styles.login}>
-          login
+          <LoginStatus isLogin={cookies().get("Bearer") ? true : false} />
         </span>
       </div>
     </header>

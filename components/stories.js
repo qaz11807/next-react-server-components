@@ -1,34 +1,36 @@
 import Link from 'next/link'
 import Story from './story'
-
-import fetchData from '../lib/fetch-data'
-import { transform } from '../lib/get-item'
-
+import { getAll } from '../lib/posts'
 import styles from './stories.module.css'
 
-async function StoryWithData({ id }) {
-  const data = await fetchData(`item/${id}`)
-  const story = transform(data)
-
-  return <Story {...story} />
+async function StoryWithData({ data }) {
+  return data.map ((post) => {
+    return (
+      <div key={post.id} className={styles.item}>
+        <Story {...post} />
+      </div>
+    )
+  })
 }
 
-export default async function Stories({ storyIds, page = 1 }) {
-  const limit = 30
-  const offset = (page - 1) * limit
+export default async function Stories({ page = 1 }) {
+  const limit = 10
+  const summary = await getAll(page, limit)
 
   return (
     <div>
-      {storyIds.slice(offset, offset + limit).map((id, i) => (
-        <div key={id} className={styles.item}>
-          {null != offset ? (
-            <span className={styles.count}>{i + offset + 1}</span>
-          ) : null}
-          <StoryWithData id={id} key={id} />
-        </div>
-      ))}
+      <StoryWithData data={summary.posts} />
+
       <div className={styles.footer}>
-        <Link href={`/news/${+page + 1}`}>More</Link>
+        { 
+          summary.current_page > 1 && 
+            <Link href={`/news/${summary.current_page - 1}`}>{'<'} Prev</Link>
+        } 
+        <span> {summary.current_page} </span>
+        { 
+          summary.current_page < summary.total_pages && 
+            <Link href={`/news/${summary.current_page + 1}`}>Next {'>'}</Link>
+        }
       </div>
     </div>
   )

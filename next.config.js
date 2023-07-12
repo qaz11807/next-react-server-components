@@ -8,6 +8,9 @@ const nextConfig = {
         destination: '/news/1'
       }
     ]
+  },
+  env:{
+    API_HOST: process.env.API_HOST
   }
 }
 

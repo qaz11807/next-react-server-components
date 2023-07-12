@@ -76,6 +76,10 @@ a.login {
   color: #000;
 }
 
+.nav-ul a:visited {
+  color: #000;
+}
+
 .nav-ul li a:hover {
   color: #fff;
 }
