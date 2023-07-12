@@ -4,7 +4,7 @@ import Comment from 'components/comment';
 import styles from './page.module.css';
 import { get } from 'lib/posts'
 
-export default async function ItemPage({ params, children }) {
+export default async function ItemPage({ params }) {
   const { id } = params
   if (!id) {
     notFound()
