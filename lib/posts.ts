@@ -7,6 +7,7 @@ const transformComments = (comments) => {
       author: comment.author.email,
       text: comment.text,
       voted: comment.voted,
+      commentsCount: comment.comments_count || 0,
       date: Date.parse(comment.created_at) || 0,
       comments: transformComments(comment.comments)
     }
@@ -21,7 +22,7 @@ const transform = (val) => {
       author: val.author.email,
       date: Date.parse(val.created_at) || 0,
       comments: val.comments ? transformComments(val.comments) : [],
-      descendants: val.descendants || 0,
+      commentsCount: val.comments_count || 0,
       weight: Math.floor(val.weight),
       title: val.title,
       voted: val.voted || false

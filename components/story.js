@@ -14,7 +14,7 @@ export default function Story({
   author,
   voted,
   weight,
-  descendants,
+  commentsCount,
   withComments = false
 }) {
   const { host } = url ? new URL(url) : { host: '#' }
@@ -84,7 +84,7 @@ export default function Story({
           </Link>{' '}
           |{' '}
           <Link href={`/item/${id}`}>
-            {descendants} {plural(descendants, 'comment')}
+            {commentsCount} {plural(commentsCount, 'comment')}
           </Link>
         </div>
       </div>
